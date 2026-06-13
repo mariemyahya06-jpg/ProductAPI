@@ -1,6 +1,5 @@
 package com.TP1.ProductAPI.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,11 @@ import com.TP1.ProductAPI.model.Product;
 @Controller
 public class ProductViewController {
 
-    @Autowired
-    private ProductServices productServices;
+    private final ProductServices productServices;
+
+    public ProductViewController(ProductServices productServices) {
+        this.productServices = productServices;
+    }
 
     // Affiche la liste des produits + un formulaire d'ajout
     @GetMapping("/products")
